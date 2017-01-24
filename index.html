@@ -18,7 +18,11 @@
   <script src="//code.angularjs.org/snapshot/angular-animate.js"></script>
   <script src="script.js"></script>
   
+<style>
+.table-striped>tbody>tr:nth-child(odd)>td
+{background-color: lightblue;}
 
+</style>
   
 </head>
 <body ng-app="ngRepeat" >
@@ -26,34 +30,34 @@
   <div class="container">
   <h2>I have {{friends.length}} friends. They are:</h2>
   <input type="search" ng-model="q" placeholder="filter friends..." aria-label="filter friends" />
- <div class="row">
-      <div class="col-sm-3">number</div> 
-      <div class="col-sm-3">name</div> 
-      <div class="col-sm-3">period</div> 
-      <div class="col-sm-3">count</div> 
-  </div> <!--end row-->
-  <ul class="example-animate-container">
-    <li class="animate-repeat" ng-repeat="friend in friends | filter:q as results">
- <div class="container">
- <div class="row">
-      <div class="col-sm-3">[{{$index + 1}}]</div> 
-      <div class="col-sm-3">{{friend.name}}</div> 
-      <div class="col-sm-3">{{friend.period}}</div> 
-      <div class="col-sm-3"> 
+ <table class="table table-striped">
+  <thead>
+      <th class="th">number</th> 
+      <th class="th">name</th> 
+      <th class="th"">period</th> 
+      <th class="th"">count</th> 
+  </thead> <!--end -->
+  <tbody>
+  <tr class="example-animate-container class="animate-repeat" ng-repeat="friend in friends | filter:q as results">
+
+      <td>[{{$index + 1}}]</td> 
+      <td>{{friend.name}}</td> 
+      <td>{{friend.period}}</td> 
+      <td> 
       <button ng-click="friend.count = friend.count + 1" ng-init="count=0">+</button>
       {{friend.count}}
       <button ng-click="friend.count = friend.count - 1" ng-init="count=0">-</button>
-      </div>
-  </div> <!--end row-->
- <div class="row">
-    <div class="animate-repeat" ng-if="results.length === 0">
+      </td>
+  </tr> <!--end row-->
+ <tr>
+    <td class="animate-repeat" ng-if="results.length === 0">
       <strong>No results found...</strong>
-    </div>
-  </div><!--end row-->
-</div>
-  </ul>
-</div>
+    </td>
+  </tr><!--end row-->
+</tbody>
+</table>
 </div> <!--end container -->
+
 </body>
 </html>
 

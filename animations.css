@@ -31,6 +31,8 @@
   opacity:1;
   max-height:30px;
 }
+.odd {background-color: red;}
+.even {background-color: red;}
 
 /*
 Copyright 2017 Google Inc. All Rights Reserved.
